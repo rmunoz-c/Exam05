@@ -27,14 +27,14 @@ searchable_tree_bag::~searchable_tree_bag()
 bool searchable_tree_bag::has(int index)const
 {
 	node *current = tree;
-	while (current != nullptr)
+	while(current != nullptr)
 	{
 		if (index < current->value)
 			return(current->l);
 		else if (index > current->value)
 			return(current->r);
 		else
-			return (true);
+			return(true);
 	}
 	return(false);
 }

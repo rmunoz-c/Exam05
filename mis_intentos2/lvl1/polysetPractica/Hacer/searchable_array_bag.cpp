@@ -24,18 +24,19 @@ searchable_array_bag &searchable_array_bag::operator=(const searchable_array_bag
 		}
 	}
 	return *this;
-}searchable_array_bag::~searchable_array_bag()
+}
+
+searchable_array_bag::~searchable_array_bag()
 {
 	array_bag::~array_bag();
 }
 
 bool searchable_array_bag::has(int index)const
 {
-	for (int i = 0; i < size; i++)
+	for(int i = 0; i < size; i++)
 	{
 		if (data[i] == index)
 			return (true);
 	}
 	return (false);
 }
-

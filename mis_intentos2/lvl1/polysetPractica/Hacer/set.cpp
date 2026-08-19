@@ -13,7 +13,7 @@ set::set(const set &other) : _bag(other._bag)
 set &set::operator=(const set &other)
 {
 	this->_bag = other._bag;
-	return(*this);
+	return (*this);
 }
 
 set::~set()
@@ -23,18 +23,16 @@ set::~set()
 
 void set::insert(int i)
 {
-	if (!_bag.has(i))
+	if(!has(i))
 		_bag.insert(i);
 }
 
 void set::insert(int *array, int size)
 {
-	int i;
-	i = 0;
-
+	int i = 0;
 	while (i < size)
 	{
-		if (!_bag.has(array[i]))
+		if(!has(array[i]))
 			_bag.insert(array[i]);
 		i++;
 	}
@@ -50,9 +48,9 @@ void set::clear()
 	_bag.clear();
 }
 
-bool set::has(int i)
+bool set::has(int index)
 {
-	return(_bag.has(i));
+	return(_bag.has(index));
 }
 
 searchable_bag &set::get_bag()

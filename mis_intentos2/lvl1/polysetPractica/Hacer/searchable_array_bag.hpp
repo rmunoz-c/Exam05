@@ -1,8 +1,8 @@
 #ifndef SEARCHABLE_ARRAY_BAG_HPP
-# define SEARCHABLE_ARRAY_BAG_HPP
+#define SEARCHABLE_ARRAY_BAG_HPP
 
-#include "../Dan/array_bag.hpp"
-#include "../Dan/searchable_bag.hpp"
+#include "Dan/array_bag.hpp"
+#include "Dan/searchable_bag.hpp"
 
 class searchable_array_bag : public array_bag, public searchable_bag
 {
