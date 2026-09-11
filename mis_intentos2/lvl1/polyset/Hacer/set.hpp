@@ -14,10 +14,10 @@ class set
 		set &operator=(const set &other);
 		~set();
 
-		virtual void insert(int i);
-		virtual void insert(int *array, int size);
-		virtual void print() const;
-		virtual void clear();
+		void insert(int i);
+		void insert(int *array, int size);
+		void print() const;
+		void clear();
 		bool has(int i);
 		searchable_bag &get_bag();
 };

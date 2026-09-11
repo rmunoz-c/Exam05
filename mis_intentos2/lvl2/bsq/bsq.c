@@ -18,8 +18,6 @@ static void	free_rows(char **row, int n)
 	free(row);
 }
 
-/* first line, by position: "<digits> <empty> <obstacle> <full>\n" and nothing
-** else — so newlines/tabs are not separators and a map char may be a space. */
 static int	parse_header(const char *s, size_t len, t_bsq *b)
 {
 	size_t	i = 0;
@@ -36,8 +34,6 @@ static int	parse_header(const char *s, size_t len, t_bsq *b)
 	return (b->empty != b->obst && b->empty != b->full && b->obst != b->full);
 }
 
-/* header line, then exactly rows equal-length '\n'-terminated lines up to
-** EOF; rows are stored without their '\n'. */
 static int	read_map(FILE *f, t_bsq *b)
 {
 	char	*buf = NULL;
@@ -72,9 +68,6 @@ static int	read_map(FILE *f, t_bsq *b)
 	return (0);
 }
 
-/* dp[j + 1] = size of the biggest square whose bottom-right corner is (i, j),
-** kept as a single rolling row.  The row-major scan with a strict '>' keeps
-** the topmost, then leftmost winner.  Also validates the map characters. */
 static int	solve(t_bsq *b)
 {
 	int	*dp = calloc((size_t)b->cols + 1, sizeof(int));
@@ -92,11 +85,9 @@ static int	solve(t_bsq *b)
 
 			if (b->row[i][j] == b->empty)
 			{
-				// this part is equalt ot min(left, up, diag)
 				int	v = up < dp[j] ? up : dp[j];
 				if (diag < v)
 					v = diag;
-				// we store the value we've just calculated
 				dp[j + 1] = ++v;
 				if (v > best)
 				{

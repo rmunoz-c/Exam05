@@ -36,7 +36,7 @@ bool searchable_array_bag::has(int index)const
 	for(int i = 0; i < size; i++)
 	{
 		if (data[i] == index)
-			return (true);
+			return(true);
 	}
 	return (false);
 }
