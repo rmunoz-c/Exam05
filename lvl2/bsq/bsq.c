@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,9 +21,9 @@ static void	free_rows(char **row, int n)
 
 /* first line, by position: "<digits> <empty> <obstacle> <full>\n" and nothing
 ** else — so newlines/tabs are not separators and a map char may be a space. */
-static int	parse_header(const char *s, size_t len, t_bsq *b)
+static int	parse_header(const char *s, ssize_t len, t_bsq *b)
 {
-	size_t	i = 0;
+	ssize_t	i = 0;
 
 	b->rows = 0;
 	while (s[i] >= '0' && s[i] <= '9' && b->rows < 200000000)
@@ -43,7 +44,7 @@ static int	read_map(FILE *f, t_bsq *b)
 	char	*buf = NULL;
 	size_t	cap = 0;
 	int		i = 0;
-	size_t	hl = getline(&buf, &cap, f);
+	ssize_t	hl = getline(&buf, &cap, f);
 
 	if (hl < 8 || !parse_header(buf, hl, b))
 		return (free(buf), 0);
@@ -52,7 +53,7 @@ static int	read_map(FILE *f, t_bsq *b)
 		return (free(buf), 0);
 	while (i < b->rows)
 	{
-		size_t	len = getline(&buf, &cap, f);
+		ssize_t	len = getline(&buf, &cap, f);
 
 		if (len < 2 || buf[len - 1] != '\n')
 			break ;
